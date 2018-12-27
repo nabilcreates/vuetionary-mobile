@@ -1,11 +1,11 @@
 <template>
     <Page>
-        <ActionBar title="vuetionary" />
+        <ActionBar title="vuetionary-mobile" />
 
         <StackLayout class="main-body-wrapper">
 
             <GridLayout columns='5*,2*' rows='*' height='40'>
-                <TextField v-model='word' hint="Enter text.." col='0' row='0' />
+                <TextField v-model='word' hint="Enter something..." col='0' row='0' @returnPress='getMeaning(word)' />
                 <Button text="Get Meaning" @tap="getMeaning(word)" col='1' row='0' />
             </GridLayout>
 
@@ -25,7 +25,7 @@
     export default {
         data() {
             return {
-                word: "random",
+                word: "",
                 data: [],
             }
         },
