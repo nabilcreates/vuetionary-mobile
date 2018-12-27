@@ -2,22 +2,20 @@
     <Page>
         <ActionBar title="vuetionary" />
 
-        <StackLayout>
+        <StackLayout class="main-body-wrapper">
 
-            <GridLayout columns='4*,*' rows='*' height='40'>
-                <TextField v-model='word' hint="Enter text..." col='0' row='0' />
-                <Button text="WDIM?" @tap="getMeaning(word)" col='1' row='0' />
+            <GridLayout columns='5*,2*' rows='*' height='40'>
+                <TextField v-model='word' hint="Enter text.." col='0' row='0' />
+                <Button text="Get Meaning" @tap="getMeaning(word)" col='1' row='0' />
             </GridLayout>
 
-            <StackLayout>
-                <ListView for="item in data">
-                    <v-template>
-                        <GridLayout rows='*,*' columns='*' class='list-group-item'>
-                            <Label textWrap="true" class="message" :text="item.text" col="0" row="1" />
-                        </GridLayout>
-                    </v-template>
-                </ListView>
-            </StackLayout>
+            <ListView for="item in data">
+                <v-template>
+                    <GridLayout class="dict-items" columns='*' rows='*,*'>
+                        <Label textWrap="true" class="message" :text="item.text" col="0" row="0" />
+                    </GridLayout>
+                </v-template>
+            </ListView>
 
         </StackLayout>
     </Page>
@@ -45,10 +43,6 @@
                     })
             }
         },
-
-        mounted() {
-            this.getMeaning(this.word);
-        }
     }
 </script>
 
@@ -63,5 +57,21 @@
         text-align: center;
         font-size: 20;
         color: #333333;
+    }
+
+    .main-body-wrapper {
+        margin: 20px;
+    }
+
+    .dict-items {
+        margin: 20px 0;
+    }
+
+    .dict-items Label {
+        text-align: left;
+    }
+
+    ListView {
+        height: 100%;
     }
 </style>
